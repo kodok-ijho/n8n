@@ -9,7 +9,7 @@ RUN npm install --unsafe-perm=true --allow-root n8n-nodes-mcp
 # Copy WAHA source code
 COPY waha /waha
 WORKDIR /waha
-RUN npm install
+RUN npm install --force
 
 # Set working directory back to /data for n8n
 WORKDIR /data
