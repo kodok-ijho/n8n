@@ -1,3 +1,10 @@
+# Folder/file yang tidak perlu ikut ke image Docker
 node_modules
-waha/node_modules
-npm-debug.log
+*.log
+.env
+Dockerfile
+railway.json
+README.md
+.dockerignore
+.git
+.gitignore
