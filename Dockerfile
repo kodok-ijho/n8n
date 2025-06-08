@@ -1,20 +1,13 @@
 FROM n8nio/n8n:latest
 
+# Install MCP plugin langsung di image n8n
 RUN npm install --unsafe-perm=true --allow-root n8n-nodes-mcp
 
-COPY --chown=node:node waha /waha
-WORKDIR /waha
-
-USER node
-RUN npm install --legacy-peer-deps
-
-USER root
+# Set working directory ke default n8n data folder
 WORKDIR /data
 
-COPY --chmod=755 entrypoint.sh /entrypoint.sh
-RUN ls -l /waha
+# Expose port 5678 (default n8n port)
+EXPOSE 5678
 
-# ❌ Hapus port 5678, cukup port proxy-nya (Express WAHA)
-EXPOSE 3000
-
-ENTRYPOINT ["/entrypoint.sh"]
+# Jalankan n8n sebagai entrypoint
+ENTRYPOINT ["n8n"]
