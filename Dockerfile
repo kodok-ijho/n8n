@@ -7,7 +7,7 @@ RUN npm install --unsafe-perm=true --allow-root n8n-nodes-mcp
 COPY --chown=node:node waha /waha
 WORKDIR /waha
 
-# Jalankan sebagai user node
+# Jalankan sebagai user node dan install depedency WAHA
 USER node
 RUN npm install --legacy-peer-deps
 
