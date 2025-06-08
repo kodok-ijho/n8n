@@ -4,7 +4,6 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Default route
 app.get('/', (req, res) => {
   res.send(`
     <h1>WAHA + n8n is running!</h1>
@@ -13,12 +12,10 @@ app.get('/', (req, res) => {
   `);
 });
 
-// WAHA dashboard
 app.get('/waha', (req, res) => {
   res.send('WAHA dashboard is running via Railway!');
 });
 
-// Proxy semua /n8n ke aplikasi n8n di port 5678
 app.use(
   '/n8n',
   createProxyMiddleware({
