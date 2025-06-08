@@ -12,6 +12,7 @@ USER root
 WORKDIR /data
 
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
+RUN ls -l /waha
 
 # ❌ Hapus port 5678, cukup port proxy-nya (Express WAHA)
 EXPOSE 3000
