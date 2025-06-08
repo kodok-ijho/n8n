@@ -1,23 +1,25 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Endpoint WAHA dashboard
+// WAHA dashboard di /waha
 app.get('/waha', (req, res) => {
-  res.send('WAHA dashboard running via proxy path!');
+  res.send('WAHA dashboard is running via Railway!');
 });
 
-// Proxy ke n8n di background
+// Proxy semua /n8n ke aplikasi n8n di port 5678
 app.use(
-  '/',
+  '/n8n',
   createProxyMiddleware({
     target: 'http://localhost:5678',
+    pathRewrite: { '^/n8n': '' },
     changeOrigin: true,
-    ws: true,
+    ws: true
   })
 );
 
 app.listen(PORT, () => {
-  console.log(`Main app (WAHA proxy + dashboard) listening on port ${PORT}`);
+  console.log(`WAHA + Proxy server listening on port ${PORT}`);
 });
