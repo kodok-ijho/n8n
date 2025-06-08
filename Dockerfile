@@ -4,7 +4,7 @@ FROM n8nio/n8n:latest
 RUN npm install --unsafe-perm=true --allow-root n8n-nodes-mcp
 
 # Install pm2 to run multiple processes
-RUN npm install -g pm2
+# RUN npm install -g pm2
 
 # Copy WAHA source code
 COPY waha /waha
