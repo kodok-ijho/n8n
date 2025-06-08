@@ -4,7 +4,16 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// WAHA dashboard di /waha
+// Default route
+app.get('/', (req, res) => {
+  res.send(`
+    <h1>WAHA + n8n is running!</h1>
+    <p>🔹 <a href="/waha">Open WAHA Dashboard</a></p>
+    <p>🔹 <a href="/n8n">Open n8n UI</a></p>
+  `);
+});
+
+// WAHA dashboard
 app.get('/waha', (req, res) => {
   res.send('WAHA dashboard is running via Railway!');
 });
